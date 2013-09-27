@@ -32,7 +32,7 @@ input:focus, textarea:focus{outline: 0;}
 .add-field .title{box-sizing: border-box;width: 50%;float: left;background: #f4f42c;}
 .add-field .author{box-sizing: border-box;width: 30%;float:left;background: #f4f42c;}
 .add-field button{box-sizing: border-box;width: 20%;float:left;background: #f4f42c;margin-top: 0px;height: 40px;}
-.add-field button.ng-click-active{background: #3498db;color: #fff;}
+.add-field button.ng-click-active{background: #3498db;color: #313131;}
 .add-field input:focus{outline: 0;}
 
 .view{margin-top: 100px;}
