@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.williamagay.fiveseconds" version="1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Travelang</name>
+    <name>Surligneur</name>
     <description>
-        The best travel companion for speak the languages ​​you don't know !
+        A note application specially for books.
     </description>
     <author email="hello@williamagay.com" href="http://williamagay.com/">
         William AGAY
