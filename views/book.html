@@ -1,0 +1,53 @@
+<div class="body book-ctrl" ng-controller="BookCtrl">
+    <div class="navbar absolute">
+		<div class="logoleft"><img alt="Logo" src="img/surligneur.png" class="logo" /></div>
+		<div class="right" ng-click="$navigate.go('/','none')"><span class="booklist">Books</span></div>
+	</div>
+
+	<div class="cover">
+		<h1>“<span class="title">{{ book.title }}</span>”</h1>
+
+		<em>Written by {{ book.author }}</em>
+	</div>
+	
+	<div class="view2">
+		<div class="row">
+			<div class="two columns menu">
+				<div class="logo"><img alt="Logo" src="img/surligneur.png" class="logo" /></div>
+
+				<div class="elem" ng-click="addNote('quote')"><img alt="Quote" src="img/quote.png" /></div>
+				<div class="elem" ng-click="addNote('idea')"><img alt="Idea" src="img/idea.png" /></div>
+				<div class="elem" ng-click="addNote('info')"><img alt="Idea" src="img/info.png" /></div>
+			</div>
+
+			<div class="ten columns list">
+
+				<div class="note quote creating">
+					<textarea ng-model="newquote" class="newquote" placeholder="Write the quote"></textarea>
+					<button class="save" ng-click="save('quote')">Save</button>
+					<button class="cancel" ng-click="cancel()">Cancel</button>
+				</div>
+
+				<div class="note idea creating">
+					<textarea ng-model="newidea" class="newidea" placeholder="What is your idea ?"></textarea>
+					<button class="save" ng-click="save('idea')">Save</button>
+					<button class="cancel" ng-click="cancel()">Cancel</button>
+				</div>
+
+				<div class="note info creating">
+					<textarea ng-model="newinfo" class="newinfo" placeholder="Write the info"></textarea>
+					<button class="save" ng-click="save('info')">Save</button>
+					<button class="cancel" ng-click="cancel()">Cancel</button>
+				</div>
+
+				<div ng-repeat="(key, note) in booknotes" class="note {{ note.id }}" ng-class="note.type">
+					
+					<h1 ng-click="editPanel(note.id)">{{ note.data }}</h1>
+					<button class="cancel other" ng-click="editPanel(note.id)">Cancel</button>
+					<button class="delete" ng-click="remove(note.id, key)">Delete</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,30 @@
+<div class="body books-ctrl" ng-controller="BooksCtrl">
+    <div class="navbar absolute">
+		<div class="logoleft"><img alt="Logo" src="img/surligneur.png" class="logo" /></div>
+		<div class="right" ng-click="addBook()"><span class="plus">+</span></div>
+	</div>
+
+	<div class="add-field up">
+		<input type="text" class="title" ng-model="title" placeholder="Book title" />
+		<input type="text" class="author" ng-model="author" placeholder="Author" />
+		<button ng-click="saveBook()">Add</button>
+	</div>
+	
+	<div class="view">
+		<div class="row">
+			<div class="twelve columns centered books">
+
+				<div class="book" ng-repeat="(key, book) in books">
+
+					<div class="bg" ng-click="openBook(book.id, book.title, book.author, key)">
+						<h1>“<span class="title">{{ book.title }}</span>”</h1>
+						<br/><br/>
+
+						<em>Written by {{ book.author }}</em>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
