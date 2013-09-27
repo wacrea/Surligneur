@@ -40,7 +40,7 @@ function BooksCtrl($scope, $navigate){
 		
 		//console.log(currentBook);
 		localStorage["current_book"] = JSON.stringify(currentBook);
-		$navigate.go('/book');
+		$navigate.go('/book','none');
 	}
 }
 

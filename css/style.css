@@ -18,7 +18,7 @@ input:focus, textarea:focus{outline: 0;}
 /* Navbar */
 .navbar{background: #3498db;height: 44px;width: 100%;position: fixed;top:0;left: 0;right: 0;z-index: 222;border-bottom: 4px solid #f4f42c;}
 .navbar .logo{height: 40px;width: 136px;}
-.navbar.absolute{position: absolute;}
+.navbar.absolute{position: fixed;}
 .navbar .title{color: #313131;text-transform: uppercase;text-align: center;width: 60%;margin: auto;height: 44px;line-height: 44px;}
 .navbar .logoleft{padding-left: 10px;height: 44px;width: 200px;background: none;position: absolute;left: 0;top:0;line-height: 44px;}
 .navbar .right{height: 44px;width: 15%;background: #f4f42c;position: absolute;right: 0;top:0;text-align: center;line-height: 44px;}
@@ -56,7 +56,7 @@ input:focus, textarea:focus{outline: 0;}
 .menu .logo{position: fixed;top: 0px;left:0;padding-left: 14px;width: 119px;}
 .menu .logo img{height: 29px;width: 100px;}
 .menu .elem{padding: 20px 0;background: #3498db;text-align: center;}
-.menu .elem img{width: 60px;margin: auto;}
+.menu .elem img{width: 50px;margin: auto;}
 .menu .elem.ng-click-active{background: #f4f42c;}
 
 .list{margin-top: 220px;float: right;padding-right: 2%;}
