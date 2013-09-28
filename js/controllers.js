@@ -39,6 +39,7 @@ function BooksCtrl($scope, $navigate){
 
 			$scope.nobooks = 'hide';
 
+			$('.add-field input').val('');
 			$('.add-field').removeClass("down").addClass("up").slideUp();
 		}
 	}
