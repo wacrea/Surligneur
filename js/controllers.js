@@ -11,12 +11,17 @@ function BooksCtrl($scope, $navigate){
 		$scope.books = JSON.parse(localStorage['books']);
 	}
 
+	if($scope.books.length != 0){
+		$scope.nobooks = 'hide';
+	}
+
 	$scope.addBook = function() {
 
 		if($('.add-field').hasClass('up')){
 			$('.add-field').removeClass("up").addClass("down").slideDown();
 		}
 		else{
+			$('.add-field input').val('');
 			$('.add-field').removeClass("down").addClass("up").slideUp();
 		}
 	}
@@ -28,10 +33,14 @@ function BooksCtrl($scope, $navigate){
 		bookInfos.title = $scope.title;
 		bookInfos.author = $scope.author;
 
-		$scope.books.unshift(bookInfos);
-		localStorage['books'] = JSON.stringify($scope.books);
+		if(bookInfos.title.length != 0 || bookInfos.author.length != 0){
+			$scope.books.unshift(bookInfos);
+			localStorage['books'] = JSON.stringify($scope.books);
 
-		$('.add-field').removeClass("down").addClass("up").slideUp();
+			$scope.nobooks = 'hide';
+
+			$('.add-field').removeClass("down").addClass("up").slideUp();
+		}
 	}
 
 	$scope.openBook = function(id, title, author, key) {
@@ -55,6 +64,11 @@ function BookCtrl($scope, $navigate){
 	if(localStorage[storage_name]){
 		$scope.booknotes = JSON.parse(localStorage[storage_name]);
 	}
+
+	if($scope.booknotes.length != 0){
+		$scope.nonotes = 'hide';
+	}
+
 
 	$scope.addNote = function(type) {
 
@@ -82,11 +96,16 @@ function BookCtrl($scope, $navigate){
 			note.data = $scope.newinfo;
 		}
 
-		$scope.booknotes.unshift(note);
-		localStorage[storage_name] = JSON.stringify($scope.booknotes);
+		if($scope.newquote.length != 0 || $scope.newidea.length != 0 || $scope.newinfo.length != 0){
 
-		$('.creating textarea, .creating input').val('');
-		$('.creating').hide();
+			$scope.booknotes.unshift(note);
+			localStorage[storage_name] = JSON.stringify($scope.booknotes);
+
+			$scope.nonotes = 'hide';
+
+			$('.creating textarea, .creating input').val('');
+			$('.creating').hide();
+		}
 	}
 
 	$scope.cancel = function() {
