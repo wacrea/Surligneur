@@ -97,7 +97,7 @@ function BookCtrl($scope, $navigate){
 			note.data = $scope.newinfo;
 		}
 
-		if($scope.newquote.length != 0 || $scope.newidea.length != 0 || $scope.newinfo.length != 0){
+		if(note.data.length != 0){
 
 			$scope.booknotes.unshift(note);
 			localStorage[storage_name] = JSON.stringify($scope.booknotes);
