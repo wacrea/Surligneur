@@ -31,7 +31,7 @@ function BooksCtrl($scope, $navigate){
 		var bookInfos = new Object();
 		bookInfos.id = Math.floor(Math.random()*100001);
 		bookInfos.title = $scope.title;
-		bookInfos.author = $scope.author;
+		bookInfos.author = capitaliseFirstLetter($scope.author);
 
 		if(bookInfos.title.length != 0 || bookInfos.author.length != 0){
 			$scope.books.unshift(bookInfos);
