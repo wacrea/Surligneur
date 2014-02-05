@@ -17,5 +17,6 @@ var myApp = angular.module('surligneur', ['localization','surligneur.services','
     "gKaytfQHhmoEHnGonJPXeOfsOyFdkO47"
 );
 
+var gaPlugin;
 gaPlugin = window.plugins.gaPlugin;
 gaPlugin.init(successHandler, errorHandler, "UA-47817539-1", 10);
