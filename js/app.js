@@ -16,3 +16,6 @@ var myApp = angular.module('surligneur', ['localization','surligneur.services','
     "https://surligneur.azure-mobile.net/",
     "gKaytfQHhmoEHnGonJPXeOfsOyFdkO47"
 );
+
+gaPlugin = window.plugins.gaPlugin;
+gaPlugin.init(successHandler, errorHandler, "UA-47817539-1", 10);
