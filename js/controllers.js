@@ -15,6 +15,26 @@ function BooksCtrl($scope, $navigate){
 		$scope.nobooks = 'hide';
 	}
 
+	// If user not created, open the modal
+	if(typeof localStorage['user'] == 'undefined'){
+
+		$scope.openmodal = 'show';
+	}
+
+	$scope.saveEmail = function(){
+
+		var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/; // Email regex
+		if($scope.email != '' && typeof $scope.email != 'undefined' && filter.test($scope.email)){
+
+			var email = $scope.email.toLowerCase();
+			// Get lang
+		}
+		else{
+
+			alert('Wrong email');
+		}
+	};
+
 	$scope.addBook = function() {
 
 		if($('.add-field').hasClass('up')){
@@ -34,6 +54,10 @@ function BooksCtrl($scope, $navigate){
 		bookInfos.author = capitaliseFirstLetter($scope.author);
 
 		if(bookInfos.title.length != 0 || bookInfos.author.length != 0){
+
+			// Check on Google Books API
+			//$('.modal-container').fadeIn();
+
 			$scope.books.unshift(bookInfos);
 			localStorage['books'] = JSON.stringify($scope.books);
 

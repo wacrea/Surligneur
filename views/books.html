@@ -9,6 +9,18 @@
 		<input type="text" class="author" ng-model="author" placeholder="Author" />
 		<button ng-click="saveBook()">Add</button>
 	</div>
+
+	<div class="modal-container" ng-class="openmodal">
+		<div class="modal">
+
+			<h1 class="title">Who are you ?</h1>
+			<div class="content">
+				<input ng-model="email" type="text" placeholder="Your email address" />
+				<button ng-click="saveEmail()">Save</button>
+			</div>
+			
+		</div>
+	</div>
 	
 	<div class="view">
 		<div class="row">

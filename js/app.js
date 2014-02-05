@@ -11,3 +11,8 @@ var myApp = angular.module('surligneur', ['surligneur.services','ajoslin.mobile-
 
         $routeProvider.otherwise({redirectTo: '/'});
   }]);
+
+ var client = new WindowsAzure.MobileServiceClient(
+    "https://surligneur.azure-mobile.net/",
+    "gKaytfQHhmoEHnGonJPXeOfsOyFdkO47"
+);
