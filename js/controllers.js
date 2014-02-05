@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-function BooksCtrl($scope, $navigate){
+function BooksCtrl($scope, $navigate, localize){
 	$scope.$navigate = $navigate;
 
 	$scope.books = new Array();
@@ -26,8 +26,17 @@ function BooksCtrl($scope, $navigate){
 		var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/; // Email regex
 		if($scope.email != '' && typeof $scope.email != 'undefined' && filter.test($scope.email)){
 
-			var email = $scope.email.toLowerCase();
-			// Get lang
+			var email 		= $scope.email.toLowerCase();
+			var lang 		= localize.translate('_locale_');
+
+			// Insert on Azure
+			var newUser = { email: email, lang: lang};
+            client.getTable("User").insert(newUser);
+
+            // Store in localStorage.
+            localStorage['user'] = JSON.stringify(newUser);
+
+            $scope.openmodal = 'hide';
 		}
 		else{
 
@@ -49,16 +58,20 @@ function BooksCtrl($scope, $navigate){
 	$scope.saveBook = function() {
 
 		var bookInfos = new Object();
-		bookInfos.id = Math.floor(Math.random()*100001);
+		bookInfos.id = Math.floor(Math.random()*10000000001);
 		bookInfos.title = $scope.title;
 		bookInfos.author = capitaliseFirstLetter($scope.author);
 
 		if(bookInfos.title.length != 0 || bookInfos.author.length != 0){
 
-			// Check on Google Books API
-			//$('.modal-container').fadeIn();
+			// Add to Azure database, table "Book"
+			var currentUser = localStorage['user'];
+			currentUser = JSON.parse(currentUser);
 
-			$scope.books.unshift(bookInfos);
+			var newBook = { idlocal: bookInfos.id, title: bookInfos.title, author: bookInfos.author, createdby: currentUser.email, public: false, deleted: false};
+            client.getTable("Book").insert(newBook);
+
+            $scope.books.unshift(bookInfos);
 			localStorage['books'] = JSON.stringify($scope.books);
 
 			$scope.nobooks = 'hide';
@@ -103,14 +116,14 @@ function BookCtrl($scope, $navigate){
 
 		// Back to top
 		$('body,html').animate({
-				scrollTop: 200
+				scrollTop: 130
 		}, 300);
 	}
 
 	$scope.save = function(type) {
 
 		var note = new Object();
-			note.id = Math.floor(Math.random()*100001);
+			note.id = Math.floor(Math.random()*10000000001);
 			note.type = type;
 
 		if(type == 'quote'){
@@ -125,6 +138,10 @@ function BookCtrl($scope, $navigate){
 
 			$scope.booknotes.unshift(note);
 			localStorage[storage_name] = JSON.stringify($scope.booknotes);
+
+			// Save on Azure
+			var newNote = { content: note.data, kind: type, bookidlocal: $scope.book.id };
+            client.getTable("Note").insert(newNote);
 
 			$scope.nonotes = 'hide';
 

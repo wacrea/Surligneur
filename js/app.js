@@ -1,6 +1,6 @@
 'use strict';
 
-var myApp = angular.module('surligneur', ['surligneur.services','ajoslin.mobile-navigate','ngMobile','shoppinpal.mobile-menu'])
+var myApp = angular.module('surligneur', ['localization','surligneur.services','ajoslin.mobile-navigate','ngMobile','shoppinpal.mobile-menu'])
     .config(function ($compileProvider){
         $compileProvider.urlSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
     })
