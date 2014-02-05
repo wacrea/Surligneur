@@ -89,6 +89,16 @@ function BooksCtrl($scope, $navigate, localize){
 		localStorage["current_book"] = JSON.stringify(currentBook);
 		$navigate.go('/book','none');
 	}
+
+	$scope.delete = function(key){
+
+		var result = confirm("Want to delete ?");
+		if (result==true) {
+		    
+		    // Delete
+		    $scope.books.splice( key, 1 );
+		}
+	};
 }
 
 function BookCtrl($scope, $navigate){

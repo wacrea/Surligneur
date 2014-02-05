@@ -35,9 +35,10 @@
 					<div class="bg" ng-click="openBook(book.id, book.title, book.author, key)">
 						<h1>“<span class="title">{{ book.title }}</span>”</h1>
 						<br/><br/>
-
 						<em>Written by {{ book.author }}</em>
 					</div>
+
+					<img alt="delete" ng-click="delete(key)" src="img/delete.png" class="delete" />
 				</div>
 				
 			</div>
