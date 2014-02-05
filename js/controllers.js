@@ -189,8 +189,6 @@ function BookCtrl($scope, $navigate){
 
 		// Remove from Scope
 		$scope.booknotes.splice( key, 1 );
-
-		// Remove from LocalStorage
 		localStorage[storage_name] = JSON.stringify($scope.booknotes);
 	}
 }
