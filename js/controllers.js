@@ -90,13 +90,16 @@ function BooksCtrl($scope, $navigate, localize){
 		$navigate.go('/book','none');
 	}
 
-	$scope.delete = function(key){
+	$scope.delete = function(key, bookid){
 
 		var result = confirm("Want to delete ?");
 		if (result==true) {
 		    
 		    // Delete
 		    $scope.books.splice( key, 1 );
+		    localStorage['books'] = JSON.stringify($scope.books);
+
+		    delete localStorage['booknotes_'+bookid];
 		}
 	};
 }
